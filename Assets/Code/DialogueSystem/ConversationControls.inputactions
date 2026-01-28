@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "ConversationControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "2154cad8-cc8b-4ce8-ae00-2d9bc394ed1e",
+            "actions": [
+                {
+                    "name": "NextDialogue",
+                    "type": "Button",
+                    "id": "62266624-37aa-464d-beb4-0aa2e9765501",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "68ba63c3-02c7-4ab8-9da3-62b0f88464ae",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1379b2d1-6c76-4064-9bf5-e79999a4449e",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
