@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private Camera _camera;
+    private Vector3 _lastPosition;
     [SerializeField] private Vector3SO _targetPositionSO;
     
     public LayerMask GroundLayer;
@@ -28,19 +29,20 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, GroundLayer))
         {
-            _targetPositionSO.Value = hit.point;
+            _lastPosition = hit.point;
             return;
         }
 
-        _targetPositionSO.Value = Vector3.zero;
+        _lastPosition = Vector3.zero;
     }
 
-    private protected void ShowTargetPosition()
+    private void ShowTargetPosition()
     {
+        _targetPositionSO.Value = _lastPosition;
         Debug.Log($"Target position set to {_targetPositionSO.Value}");
         
-        GameObject spawnedObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        spawnedObject.GetComponent<Renderer>().material.color = Color.cadetBlue;
-        spawnedObject.transform.position = _targetPositionSO.Value;
+        // GameObject spawnedObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        // spawnedObject.GetComponent<Renderer>().material.color = Color.cadetBlue;
+        // spawnedObject.transform.position = _targetPositionSO.Value;
     }
 }
