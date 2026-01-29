@@ -603,10 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08aaa4d84dc87a4faec716f736d3745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  _targetPositionSO: {fileID: 0}
+  _targetPositionSO: {fileID: 11400000, guid: 0f8d645ba1719524f972ae007f32bbbc, type: 2}
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
