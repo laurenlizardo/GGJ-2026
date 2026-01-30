@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class VoidEventListener : MonoBehaviour
+public class ConversationEventListener : MonoBehaviour
 {
-    [SerializeField] private VoidEventChannel _eventChannel;
-    public VoidEvent OnEventRaised;
+    private ConversationEventChannel _eventChannel;
+    public ConversationEvent OnEventRaised;
 
     private void OnEnable()
     {
@@ -19,8 +19,8 @@ public class VoidEventListener : MonoBehaviour
         _eventChannel.RemoveListener(this);
     }
     
-    public void RaiseEvent()
+    public void RaiseEvent(Conversation conversation)
     {
-        OnEventRaised?.Invoke();
+        OnEventRaised?.Invoke(conversation);
     }
 }

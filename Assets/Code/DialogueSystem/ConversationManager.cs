@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour
@@ -15,10 +17,25 @@ public class ConversationManager : MonoBehaviour
     public Dialogue CurrentDialogue => _currentDialogue;
     
     public GameObject DialogueBox;
+    public TMP_Text CharacterNameText;
+    public TMP_Text DialogueLine;
     public Button NextButton;
     public Button ExitButton;
+
+    public static Conversation Current;
+
+    private void Awake()
+    {
+        DialogueBox.SetActive(false);
+    }
+
+    public static void SetCurrentConversation(Conversation conversation)
+    {
+        Current = conversation;
+    }
     
-    public void NextDialogue(InputAction.CallbackContext context)   // Connect to NextButton
+    // Connect this to NextButton
+    public void NextDialogue()   
     {
         if (DialogueQueue.Count == 0)
         {
@@ -27,18 +44,20 @@ public class ConversationManager : MonoBehaviour
             return;
         }
         
-        if (context.performed)
-        {
-            // Display dialogue in queue
-            _currentDialogue = DialogueQueue.Peek();
-            Debug.Log(string.Format("NAME: {0}", _currentDialogue.CharacterProfile.Name));
-            Debug.Log(string.Format("LINE: {0}", _currentDialogue.Line));
+        // Display dialogue in queue
+        _currentDialogue = DialogueQueue.Peek();
+        
+        Debug.Log(string.Format("NAME: {0}", _currentDialogue.CharacterProfile.Name));
+        Debug.Log(string.Format("LINE: {0}", _currentDialogue.Line));
+        
+        CharacterNameText.text = _currentDialogue.CharacterProfile.Name;
+        DialogueLine.text = _currentDialogue.Line;
             
-            // Remove dialogue from queue
-            DialogueQueue.Dequeue();
-        }
+        // Remove dialogue from queue
+        DialogueQueue.Dequeue();
     }
 
+    // Invoke this when the NPC is clicked on
     public void Begin()
     {
         InitializeConversation();
@@ -46,8 +65,14 @@ public class ConversationManager : MonoBehaviour
         DialogueBox.SetActive(true);
         NextButton.gameObject.SetActive(true);
         ExitButton.gameObject.SetActive(false);
+        
+        CharacterNameText.text = "";
+        DialogueLine.text = "";
+        
+        NextDialogue();
     }
 
+    // Connect this to ExitButton
     public void End()
     {
         DialogueBox.SetActive(false);
@@ -65,11 +90,5 @@ public class ConversationManager : MonoBehaviour
         }
         
         Debug.Log("============COMPLETED POPULATING DIALOGUE QUEUE============");
-    }
-
-    // Use this to get the Conversation attached to the NPC
-    public void SetCurrentConversation(Conversation conversation)
-    {
-        _currentConversation = conversation;
     }
 }

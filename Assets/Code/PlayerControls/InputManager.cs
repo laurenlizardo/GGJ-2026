@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     
     public LayerMask GroundLayer;
     public LayerMask NPCLayer;
+
+    public VoidEventChannel OnNPCClicked;
     
     private void Start()
     {
@@ -26,7 +28,13 @@ public class InputManager : MonoBehaviour
         if (context.performed)
         {
             SetPlayerDestination();
+            OnNPCClicked.Raise();
         }
+    }
+
+    public void StoreConversation()
+    {
+        
     }
     
     // Left mouse button move
@@ -44,7 +52,11 @@ public class InputManager : MonoBehaviour
         {
             //Debug.DrawRay(ray.origin, (hit2.point - ray.origin) * 100, Color.red);
             _lastPosition = hit2.point;
-            
+
+            if (hit2.collider.gameObject.GetType() == typeof(NPC))
+            {
+                ConversationManager.SetCurrentConversation(hit2.collider.GetComponent<NPC>().Conversation);
+            }
             
             Debug.Log(hit2.collider.gameObject.name);
         }
