@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Vector3SO _targetPositionSO;
     
