@@ -4,16 +4,23 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private Camera _camera;
-    private Vector3 _lastPosition;
+    private Vector3 _lastPosition = Vector3.zero;
     [SerializeField] private Vector3Variable _playerDestination;
     
     public LayerMask GroundLayer;
+    public LayerMask NPCLayer;
     
     private void Start()
     {
         _camera = Camera.main;
     }
+
+    private void Update()
+    {
+        
+    }
     
+    // Left mouse button click
     public void UseMousePosition(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -22,18 +29,25 @@ public class InputManager : MonoBehaviour
         }
     }
     
+    // Left mouse button move
     public void StoreMousePosition(InputAction.CallbackContext context)
     {
         Ray ray = _camera!.ScreenPointToRay(context.ReadValue<Vector2>());
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, GroundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, GroundLayer))
         {
+            //Debug.DrawRay(ray.origin, (hit.point - ray.origin) * 100, Color.green);
             _lastPosition = hit.point;
-            return;
         }
 
-        _lastPosition = Vector3.zero;
+        if (Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, NPCLayer))
+        {
+            //Debug.DrawRay(ray.origin, (hit2.point - ray.origin) * 100, Color.red);
+            _lastPosition = hit2.point;
+            
+            
+            Debug.Log(hit2.collider.gameObject.name);
+        }
     }
 
     private void SetPlayerDestination()

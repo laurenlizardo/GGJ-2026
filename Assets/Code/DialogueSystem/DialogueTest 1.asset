@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a8beb5e2229ef47804b101bad1206e, type: 3}
   m_Name: DialogueTest 1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  _speakerName: Butterfly
-  _line: Hello wormmm!
+  _characterProfile: {fileID: 11400000, guid: 6339f2fc04becdc47aa094c09b14391a, type: 2}
+  _line: Aspen! I need your help!

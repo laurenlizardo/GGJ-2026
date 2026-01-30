@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a8beb5e2229ef47804b101bad1206e, type: 3}
   m_Name: DialogueTest 2
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  _speakerName: Worm
-  _line: Why hello, butterfly
+  _characterProfile: {fileID: 11400000, guid: 6b0ab95357cba1744b2aed29dd6ea88c, type: 2}
+  _line: Hey Clover. Is everything ok? What's the matter?
