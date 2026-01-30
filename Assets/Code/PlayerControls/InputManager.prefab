@@ -62,7 +62,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8384650775461867837}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: MoveTo
+        m_MethodName: UseMousePosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8384650775461867837}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: GetMousePosition
+        m_MethodName: StoreMousePosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08aaa4d84dc87a4faec716f736d3745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  _targetPositionSO: {fileID: 11400000, guid: 0f8d645ba1719524f972ae007f32bbbc, type: 2}
+  _playerDestination: {fileID: 11400000, guid: 0f8d645ba1719524f972ae007f32bbbc, type: 2}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64

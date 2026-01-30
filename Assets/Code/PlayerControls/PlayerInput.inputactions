@@ -7,7 +7,7 @@
             "id": "a7aa8868-2571-48ec-94f8-8547dde96512",
             "actions": [
                 {
-                    "name": "MoveTo",
+                    "name": "LeftMouseButton",
                     "type": "Button",
                     "id": "5ef5297d-6e4d-4f46-9603-900fc7df8aee",
                     "expectedControlType": "",
@@ -33,7 +33,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveTo",
+                    "action": "LeftMouseButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
