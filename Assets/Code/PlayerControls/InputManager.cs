@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
@@ -9,6 +10,11 @@ public class InputManager : MonoBehaviour
     
     public LayerMask GroundLayer;
     public LayerMask NPCLayer;
+    public LayerMask UILayer;
+
+    [SerializeField] private bool _isHoveringOverGround;
+    [SerializeField] private bool _isHoveringOverNpc;
+    [SerializeField] private bool _isHoveringOverUI;
 
     public VoidEventChannel OnNPCClicked;
     
@@ -27,14 +33,12 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            SetPlayerDestination();
-            OnNPCClicked.Raise();
+            if (_isHoveringOverGround)
+                SetPlayerDestination();
+            
+            if( _isHoveringOverNpc)
+                OnNPCClicked.Raise();
         }
-    }
-
-    public void StoreConversation()
-    {
-        
     }
     
     // Left mouse button move
@@ -46,10 +50,23 @@ public class InputManager : MonoBehaviour
         {
             //Debug.DrawRay(ray.origin, (hit.point - ray.origin) * 100, Color.green);
             _lastPosition = hit.point;
+            _isHoveringOverGround = true;
+            return;
         }
+        
+        _isHoveringOverGround = false;
+    }
 
+    public void HoverOverNPC(InputAction.CallbackContext context)
+    {
+        Ray ray = _camera!.ScreenPointToRay(context.ReadValue<Vector2>());
+        
         if (Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, NPCLayer))
         {
+            _isHoveringOverNpc = true;
+            _isHoveringOverGround = false;
+            _isHoveringOverUI = false;
+            
             //Debug.DrawRay(ray.origin, (hit2.point - ray.origin) * 100, Color.red);
             _lastPosition = hit2.point;
 
@@ -59,7 +76,29 @@ public class InputManager : MonoBehaviour
             }
             
             Debug.Log(hit2.collider.gameObject.name);
+            return;
         }
+        
+        _isHoveringOverNpc = false;
+    }
+
+    public void HoverOverUI(InputAction.CallbackContext context)
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
+        Ray ray = _camera!.ScreenPointToRay(context.ReadValue<Vector2>());
+        
+        if (Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, UILayer))
+        {
+            _isHoveringOverUI = true;
+            _isHoveringOverNpc = false;
+            _isHoveringOverGround = false;
+            return;
+        }
+        
+        _isHoveringOverUI = false;
+        
     }
 
     private void SetPlayerDestination()

@@ -37,12 +37,7 @@ public class ConversationManager : MonoBehaviour
     // Connect this to NextButton
     public void NextDialogue()   
     {
-        if (DialogueQueue.Count == 0)
-        {
-            NextButton.gameObject.SetActive(false);
-            ExitButton.gameObject.SetActive(true);
-            return;
-        }
+        
         
         // Display dialogue in queue
         _currentDialogue = DialogueQueue.Peek();
@@ -55,6 +50,12 @@ public class ConversationManager : MonoBehaviour
             
         // Remove dialogue from queue
         DialogueQueue.Dequeue();
+        
+        if (DialogueQueue.Count == 0)
+        {
+            NextButton.gameObject.SetActive(false);
+            ExitButton.gameObject.SetActive(true);
+        }
     }
 
     // Invoke this when the NPC is clicked on
