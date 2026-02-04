@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccf6403aef00b044b718618e75c6843, type: 3}
+  m_Name: 02a
+  m_EditorClassIdentifier: Assembly-CSharp::Conversation
+  _dialogues:
+  - {fileID: 11400000, guid: 1864c3fad12722a4fb87038cd15524be, type: 2}
+  - {fileID: 11400000, guid: b34da3fef83ba1a41bc9dd9258787ca8, type: 2}
+  - {fileID: 11400000, guid: 547c2e3e8d11e2b4a817014a197b4e6e, type: 2}
+  - {fileID: 11400000, guid: 54d653301bc2ae74fa7ff561d8718cc9, type: 2}
+  - {fileID: 11400000, guid: cb52e13bd2806c940ae2709103bbfa59, type: 2}
+  - {fileID: 11400000, guid: 26b3848d28894e24f9ba2fb8d36c7562, type: 2}
+  - {fileID: 11400000, guid: 7415a445eed541742a1a780962ddae35, type: 2}
+  - {fileID: 11400000, guid: 63ccead4ddceb9e47825151b84e8ef3f, type: 2}
+  - {fileID: 11400000, guid: e3c674495983bbe4cb7377c88cf76dd2, type: 2}

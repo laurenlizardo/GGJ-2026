@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "InputSystem_MyActions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "b7bde25d-ad44-42d2-99b4-3b64b3ddf034",
+            "actions": [
+                {
+                    "name": "LeftMouseClick",
+                    "type": "Button",
+                    "id": "080d8f94-1b83-4bac-b1ef-e8c8a2207b07",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "10a4ecd3-7d54-41b9-967c-b734b9beaed7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "07a7c0e8-b39a-41cd-8fa3-7ae90ef090f3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftMouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d236a39a-6fdf-41cd-b0bc-65dd6c2a8b15",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
